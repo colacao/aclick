@@ -1,4 +1,7 @@
-(function ($) {
+/*
+手机端html5里的click事件响应在2-300ms，该js为加快click的响应时间，以jquery的事件机制状封装
+ */
+;(function ($) {
         jQuery.event.special.aclick= {
                 /**
                  * 初始化事件处理器 - this指向元素
