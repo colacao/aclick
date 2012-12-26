@@ -3,20 +3,35 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+	<style type="text/css">
+		*{
+
+			font-size: 40px;
+		}
+		li{
+
+			height:80px;
+		}
+	</style>
 	<script type="text/javascript" src="jquery-1.8.3.js"></script>
-	<script type="text/javascript" src-"aclick.js"></script>
+	<script type="text/javascript" src="aclick.js"></script>
 	<script type="text/javascript">
 		$(function () {
+			document.body.addEventListener('touchstart', function(e) {
+				window.TOUCHEND = (+new Date);
+            }, false);	
+			$('li').bind('click',function(e){
+				$('#demo2').html(((+new Date)-window.TOUCHEND));
+			})            		
 			$('li').bind('aclick',function(e){
-
-
-				
-				alert($(this).html());
+				$('#demo1').html(((+new Date)-window.TOUCHEND));
 			})
-		}
+		});
 	</script>
 </head>
 <body>
+	<div>
+		<label>请点击以下内容测试</label>
 	<ul>
 		<li>asdfasdfa</li>
 		<li>bbbbbbbbb</li>
@@ -24,5 +39,13 @@
 		<li>dfdfdfdf</li>
 		<li>eeeefdfdfd</li>
 	</ul>
+	</div>
+	<div>
+	<hr/>
+	aclick响应时间<span style="color:blue" id="demo1"></span>
+	<br/>
+	click响应时间<span style="color:red" id="demo2"></span>
+	</div>
+	<hr/>
 </body>
 </html>
