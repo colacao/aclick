@@ -6,8 +6,6 @@
                 setup: function (data, namespaces, eventHandle) {
                         var elem = this;
                         $.event.add(elem, 'touchend', function (e) {
-                                
-                
                                 var el = e.target;
                                 if(jQuery.event.special.aclick.tag){
                                         jQuery.event.trigger('aclick', null, el);  
@@ -22,15 +20,15 @@
                 tag:null
         };
         jQuery(function(){
-                document.body.addEventListener('touchstart', function(e) {
+                document.documentElement.addEventListener('touchstart', function(e) {
                         jQuery.event.special.aclick.tag = e.target;
                 }, false);
-                document.body.addEventListener('touchmove', function(e) {
+                document.documentElement.addEventListener('touchmove', function(e) {
                         jQuery.event.special.aclick.tag = null;
-                }, false);                
+                }, false);            
         })
         
-        $.fn.aclick = function (callback) {
+        jQuery.fn.aclick = function (callback) {
                 return this.bind('aclick', callback);
         };
 })(jQuery);
